@@ -1,13 +1,13 @@
 /**
  * Authors:
- *      Marcelo Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)
  *      Joao Quintas (jquintas@gmail.com)
  *      Joao Cruz (joao.pedro.cruz@tecnico.ulisboa.pt)
+ * 		Marcelo Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)
  * Maintained by: Marcelo Fialho Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)
  * Last Update: 14/12/2021
  * License: MIT
  * File: spherical_coordinates.hpp
- * Brief: Defines all functions related to general math functions that can be used anywhere
+ * Brief: Defines all functions related to spherical coordinates conversions
  */
 #pragma once
 #include <Eigen/Dense>

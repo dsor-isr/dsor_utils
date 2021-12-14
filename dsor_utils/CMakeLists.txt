@@ -1,16 +1,20 @@
 cmake_minimum_required(VERSION 3.1)
 project(dsor_utils)
 
+# Make sure the system has catkin and Eigen3 installed
 find_package(catkin REQUIRED COMPONENTS)
+find_package(Eigen3 REQUIRED)
 
 catkin_package(
- INCLUDE_DIRS include
- LIBRARIES ${PROJECT_NAME}
+ INCLUDE_DIRS 
+  include
+ LIBRARIES 
+  ${PROJECT_NAME}
  CATKIN_DEPENDS
 )
 
-# Make sure the system has eigen3 installed 
-find_package(Eigen3 REQUIRED)
+# Define the compile options for the library
+add_compile_options(-std=c++17 -Wall -O3) 
 
 # Create the include dependencies for this library
 include_directories(
@@ -19,14 +23,12 @@ include_directories(
   ${EIGEN3_INCLUDE_DIR}
 )
 
-# Define the compile options for the library
-add_compile_options(-std=c++17 -Wall -O3) 
-
 # Declare a cpp library
 add_library(${PROJECT_NAME}
   src/spherical_coordinates.cpp
 )
 
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 
 # Install the compiled files in the standard ROS location
