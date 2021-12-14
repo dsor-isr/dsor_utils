@@ -100,6 +100,28 @@ inline T wrapTopi(T angle) {
 }
 
 /**
+ * @brief Convert an angle in radian to degrees
+ * 
+ * @param angle in radians
+ * @return angle in degrees
+ */
+template <typename T>
+inline T radToDeg(T angle) {
+    return angle * 180.0 / M_PI;
+}
+
+/**
+ * @brief Convert an angle in degrees to radians
+ * 
+ * @param angle in degrees
+ * @return angle in radians
+ */
+template <typename T>
+inline T degToRad(T angle) {
+    return angle * M_PI / 180.0;
+}
+
+/**
  * @brief Method to calculate the diference between angles correctly even if they wrap between -pi and pi
  * 
  * @param a angle 1 in radians 
