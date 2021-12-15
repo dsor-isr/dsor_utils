@@ -25,6 +25,12 @@ devel_isolated/
 *.dox
 *.wikidoc
 
+# vscode stuff
+*.vscode*
+*/.vscode*
+
+*.idea*
+
 # eclipse stuff
 .project
 .cproject

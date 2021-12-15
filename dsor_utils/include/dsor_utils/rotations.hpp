@@ -21,35 +21,34 @@ namespace DSOR {
  * @brief Function to convert from quaternion to (roll, pitch and yaw), according to Z-Y-X convention
  * This function is from: https://github.com/mavlink/mavros/issues/444
  * and the logic is also available at: https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
- * 
- * NOTE: The Eigen standard way of doing it is not used because for the order YPR the output range would be:
- * [Eigen EulerAngles implementation] yaw, pitch, roll in the ranges [0:pi]x[-pi:pi]x[-pi:pi]
  * @param q An eigen quaternion
  * @return A Vector<T, 3> with the [roll, pitch, yaw] obtained according to Z-Y-X convention
  */
 template <typename T>
 inline Eigen::Matrix<T, 3, 1> quaternion_to_euler(const Eigen::Quaternion<T> &q) {
+    /* NOTE: The Eigen standard way of doing it is not used because for the order YPR the output range would be:
+    [Eigen EulerAngles implementation] yaw, pitch, roll in the ranges [0:pi]x[-pi:pi]x[-pi:pi] */
 
     Eigen::Matrix<T, 3, 1> rpy;
 
     /* Compute roll */
-    rpy.x() = std::atan2(2. * (q.w() * q.x() + q.y() * q.z()), 1. - 2. * (q.x() * q.x() + q.y()*q.y()));
-    double sin_pitch = 2. * (q.w()*q.y() - q.z()*q.x());
-    sin_pitch = sin_pitch >  1.0 ?  1.0 : sin_pitch;
-    sin_pitch = sin_pitch < -1.0 ? -1.0 : sin_pitch;
+    rpy.x() = std::atan2(2 * (q.w() * q.x() + q.y() * q.z()), 1 - 2 * (q.x() * q.x() + q.y()*q.y()));
+    T sin_pitch = 2 * (q.w()*q.y() - q.z()*q.x());
+    sin_pitch = sin_pitch >  1 ?  1 : sin_pitch;
+    sin_pitch = sin_pitch < -1 ? -1 : sin_pitch;
 
     /* Compute pitch */
     rpy.y() = std::asin(sin_pitch);
 
     /* Compute yaw */
-    rpy.z() = std::atan2(2. * (q.w()*q.z() + q.x()*q.y()), 1.0 - 2.0 * (q.y()*q.y() + q.z()*q.z()));
+    rpy.z() = std::atan2(2 * (q.w()*q.z() + q.x()*q.y()), 1 - 2 * (q.y()*q.y() + q.z()*q.z()));
     return rpy;
 }
 
 /**
- * @brief Converts a vector of [roll, pitch, yaw] according to Z-Y-X convention
+ * @brief Converts a vector of euler angles according to Z-Y-X convention
  * into a quaternion
- * @param v An eigen vector of either floats or doubles
+ * @param v An eigen vector of either floats or doubles [roll, pitch, yaw]
  * @return An Eigen Quaternion
  */
 template <typename T>
@@ -77,7 +76,7 @@ inline Eigen::Quaternion<T> euler_to_quaternion(const Eigen::Matrix<T, 3, 1> &v)
  */
 template <typename T>
 inline T yaw_from_quaternion(const Eigen::Quaternion<T> &q) {
-    return std::atan2(2. * (q.w() * q.z() + q.x() * q.y()), 1.0 - 2.0 * (q.y() * q.y() + q.z() * q.z()));
+    return std::atan2(2 * (q.w() * q.z() + q.x() * q.y()), 1 - 2 * (q.y() * q.y() + q.z() * q.z()));
 }
 
 /**
@@ -121,7 +120,7 @@ inline T wrapTopi(T angle) {
  */
 template <typename T>
 inline T radToDeg(T angle) {
-    return angle * 180.0 / M_PI;
+    return angle * 180 / M_PI;
 }
 
 /**
@@ -132,7 +131,7 @@ inline T radToDeg(T angle) {
  */
 template <typename T>
 inline T degToRad(T angle) {
-    return angle * M_PI / 180.0;
+    return angle * M_PI / 180;
 }
 
 /**
@@ -160,9 +159,9 @@ template <typename T>
 inline Eigen::Matrix<T, 3, 3> computeSkewSymmetric(const Eigen::Matrix<T, 3, 1> &v) {
 
     Eigen::Matrix<T, 3, 3> skew_symmetric;
-    skew_symmetric <<  0.0, -v(2),  v(1),
-                      v(2),   0.0, -v(0),
-                     -v(1),  v(0),   0.0;
+    skew_symmetric <<    0, -v(2),  v(1),
+                      v(2),     0, -v(0),
+                     -v(1),  v(0),     0;
 
     return skew_symmetric;
 }
@@ -191,7 +190,7 @@ template <typename T>
 inline Eigen::Matrix<T, 3, 3> rotationBodyToInertial(const Eigen::Matrix<T, 3, 1> &v) {
 
     Eigen::Matrix<T, 3, 3> rot_matrix;
-
+    
     rot_matrix << cos(v(2)) * cos(v(1)), (-sin(v(2)) * cos(v(0))) + (cos(v(2)) * sin(v(1)) * sin(v(0))), (sin(v(2)) * sin(v(0))) + (cos(v(2)) * cos(v(0)) * sin(v(1))),
                   sin(v(2)) * cos(v(1)), (cos(v(2)) * cos(v(0))) + (sin(v(0)) * sin(v(1)) * sin(v(2))), (-cos(v(2)) * sin(v(0))) + (sin(v(1)) * sin(v(2)) * cos(v(0))),
                  -sin(v(1)), cos(v(1)) * sin(v(0)), cos(v(1)) * cos(v(0));

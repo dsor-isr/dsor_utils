@@ -23,7 +23,7 @@ namespace DSOR {
  *        -1 if value is negative
  */
 template <typename T>
-inline int signVal(T v) {
+inline int sign(T v) {
     return v > 0 ? 1 : (v < 0 ? -1 : 0);
 }
 
