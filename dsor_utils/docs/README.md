@@ -10,7 +10,7 @@ TODO - create documentation for this API
 
 This library implements a set of templates to convert between ENU frame and NED frames, both for angles expressed in the inertial frame and in the body frame of a vehicle.
 
-### **Conventions on rotations**
+### **Conventions on quaternion rotations between frames**
 
 In ROS a quaternion expresses a rotation of the body frame of the vehicle (which is ENU, i.e. ENU_base_link) with respect to (w.r.t) the inertial frame of reference in ENU (i.e. ENU_inertial_frame).
 
@@ -73,7 +73,26 @@ Given this knowledge, we can now convert a ROS quaternion/rotation expressed in 
     - Action: Apply inertial frame rotation (operation 1.2)
     - State: rotation in ENU w.r.t. ENU_base_link
     ```
+### **Transform vectors and covariances between frames**
 
+For vectors w.r.t body or inertial frames expressed in ENU (Forward, Left, Up) , the transformation to express them in NED (Forward, Right, Down) depends on their respective frame of reference. 
+    
+To transform vectors w.r.t the **body-frame** the conversion is quite simple  and only requires us to:
+    ```
+    1 - apply an 180º rotation around X (Forward) axis 
+    ```
+
+To transform vectors w.r.t the **inertial-frame** the conversion is different and is made in the following way:
+    ```
+    1 - Switch XY axis
+    2 - Invert the Z axis
+    ```
+
+Regarding coordinate frame conversion for covariance matrices, the principle is similar, however, the computations are slightly different as shown on the following image.
+
+![Reference Frames](figures/ref_frames.png)
+    
+    
 ## Spherical Coordinates
 
 TODO - create documentation for this API
