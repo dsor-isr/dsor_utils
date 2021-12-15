@@ -10,7 +10,7 @@ TODO - create documentation for this API
 
 This library implements a set of templates to convert between ENU frame and NED frames, both for angles expressed in the inertial frame and in the body frame of a vehicle.
 
-### Conventions on rotations
+### **Conventions on rotations**
 
 In ROS a quaternion expresses a rotation of the body frame of the vehicle (which is ENU, i.e. ENU_base_link) with respect to (w.r.t) the inertial frame of reference in ENU (i.e. ENU_inertial_frame).
 
