@@ -11,8 +11,9 @@
  */
 #include "dsor_utils/math.hpp"
 #include "dsor_utils/rotations.hpp"
+#include "dsor_utils/frames.hpp"
 #include "dsor_utils/spherical_coordinates.hpp"
-// Note: math.hpp and rotations.hpp are only included so that the header files are indexed by catkin (to be improved)
+// Note: math.hpp, rotations.hpp and frames.hpp are only included so that the header files are indexed by catkin (to be improved)
 
 /**
  * @brief Convert from spherical to cartesian coordinates. Used mainly with usbl fixes

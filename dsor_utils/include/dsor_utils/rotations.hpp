@@ -20,7 +20,7 @@ namespace DSOR {
 /**
  * @brief Function to convert from quaternion to (roll, pitch and yaw), according to Z-Y-X convention
  * This function is from: https://github.com/mavlink/mavros/issues/444
- * and the logic is also available at: https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles.
+ * and the logic is also available at: https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
  * 
  * NOTE: The Eigen standard way of doing it is not used because for the order YPR the output range would be:
  * [Eigen EulerAngles implementation] yaw, pitch, roll in the ranges [0:pi]x[-pi:pi]x[-pi:pi]
@@ -59,11 +59,25 @@ inline Eigen::Quaternion<T> euler_to_quaternion(const Eigen::Matrix<T, 3, 1> &v)
     Eigen::Quaternion<T> orientation;
 
     // Obtain the orientation according to Z-Y-X convention
-    orientation = Eigen::AngleAxis<T>(v(2), Eigen::Matrix<T, 3, 1>::UnitZ()) *
-            Eigen::AngleAxis<T>(v(1), Eigen::Matrix<T, 3, 1>::UnitY()) *
-            Eigen::AngleAxis<T>(v(0), Eigen::Matrix<T, 3, 1>::UnitX());
+    orientation = Eigen::AngleAxis<T>(v.z(), Eigen::Matrix<T, 3, 1>::UnitZ()) *
+            Eigen::AngleAxis<T>(v.y(), Eigen::Matrix<T, 3, 1>::UnitY()) *
+            Eigen::AngleAxis<T>(v.x(), Eigen::Matrix<T, 3, 1>::UnitX());
 
     return orientation;
+}
+
+/**
+ * @brief Gets the yaw angle from a quaternion (assumed a Z-Y-X rotation)
+ * NOTE: this function is based on: 
+ * https://github.com/mavlink/mavros/blob/ros2/mavros/src/lib/ftf_quaternion_utils.cpp
+ * which in turn has the theory explained in:
+ * https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
+ * @param q A eigen quaternion
+ * @return The yaw angle in radians (assumed a Z-Y-X rotation)
+ */
+template <typename T>
+inline T yaw_from_quaternion(const Eigen::Quaternion<T> &q) {
+    return std::atan2(2. * (q.w() * q.z() + q.x() * q.y()), 1.0 - 2.0 * (q.y() * q.y() + q.z() * q.z()));
 }
 
 /**
