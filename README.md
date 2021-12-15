@@ -1,2 +1,2 @@
-# medusa
-Medusa Stack from DSOR/ISR, Portugal
+# DSOR Common
+Common libraries used by DSOR/ISR, Portugal
