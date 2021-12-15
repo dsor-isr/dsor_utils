@@ -30,7 +30,7 @@ Now that we have explained both the rotations in the body and inertial frames, l
         
         - Rotate 90º about Z-axis
         - Rotate 0º about Y-axis
-        - Rotate -180º about X-axis
+        - Rotate 180º about X-axis
 
     1.2) To convert a rotation expressed in NED to a rotation expressed in ENU, we must apply the following rotation (using Z-Y-X convention):
 
