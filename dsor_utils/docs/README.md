@@ -18,7 +18,7 @@ Note that in ENU_base_link, the X-axis comes out of the front of the vehicle and
 
 On the other hand, in marine and aerial vehicles it is typical to consider a body frame which is expressed in NED_base_link, where the X-axis also comes out of the front of the vehicle but the Z-axis goes "out of the vehicle in downwards direction", according to the following figure (adapted from PX4 website). Therefore, according to the literature, a quaternion should express a rotation of the body frame of the vehicle (which is NED, i.e. NED_base_link) with respect to (w.r.t) the inertial frame of reference in NED (i.e. NED_inertial_frame).
 
-![Reference Frames](figures/ref_frames.png)
+![Reference Frames](figures/covariance_transformation.png)
 
 From the Figure it is trivial to conclude that rotating ENU_base_link <-> NED_base_link is different then rotating ENU_inertial_frame <-> NED_inertial_frame. This comes from the fact that in the body frame, both ENU and NED conventions arbitrate that the X axis comes forwards of the vehicle (this axis does not change), while in the inertial frame you can see from the figure above that it does change.
 
@@ -79,13 +79,13 @@ For vectors w.r.t body or inertial frames expressed in ENU (Forward, Left, Up) ,
     
 To transform vectors w.r.t the **body-frame** the conversion is quite simple  and only requires us to:
     ```
-    1 - apply an 180º rotation around X (Forward) axis 
+    - apply an 180º rotation around X (Forward) axis 
     ```
 
 To transform vectors w.r.t the **inertial-frame** the conversion is different and is made in the following way:
     ```
-    1 - Switch XY axis
-    2 - Invert the Z axis
+    - Switch XY axis
+    - Invert the Z axis
     ```
 
 Regarding coordinate frame conversion for covariance matrices, the principle is similar, however, the computations are slightly different as shown on the following image.
