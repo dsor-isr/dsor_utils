@@ -55,7 +55,10 @@ static const Eigen::Quaternion<T> BODY_ENU_NED_Q = euler_to_quaternion(Eigen::Ma
  * Fto Forward, Left, Up (body frame in ENU).
  */
 template <typename T>
-static const Eigen::Transform<T, 3, Eigen::Affine> BODY_ENU_NED_TF = Eigen::Transform<T, 3, Eigen::Affine>(BODY_ENU_NED_Q);
+static const Eigen::Transform<T, 3, Eigen::Affine> BODY_ENU_NED_TF = Eigen::Transform<T, 3, Eigen::Affine>(BODY_ENU_NED_Q<T>);
+//template <typename T>
+//static const Eigen::Matrix<T, 3, 3> BODY_ENU_NED_AXIS = BODY_ENU_NED_Q<T>.toRotationMatrix();
+
 
 /**
  * @brief Use reflections instead of rotations for NED <-> ENU transformation
@@ -80,7 +83,7 @@ static const Eigen::DiagonalMatrix<T, 3> NED_ENU_REFLECTION_Z(1, 1, -1);
  */
 template <typename T>
 inline Eigen::Quaternion<T> rot_body_rotation(const Eigen::Quaternion<T> &q) {
-	return q * ENU_NED_BODY_Q;
+	return q * ENU_NED_BODY_Q<T>;
 }
 
 /**
@@ -96,7 +99,7 @@ inline Eigen::Quaternion<T> rot_body_rotation(const Eigen::Quaternion<T> &q) {
  */
 template <typename T>
 inline Eigen::Quaternion<T> rot_inertial_rotation(const Eigen::Quaternion<T> &q) {
-	return ENU_NED_INERTIAL_Q * q;
+	return ENU_NED_INERTIAL_Q<T> * q;
 }
 
 
@@ -127,7 +130,7 @@ inline Eigen::Quaternion<T> rot_body_to_inertial(const Eigen::Quaternion<T> &q) 
  */
 template <typename T>
 inline Eigen::Matrix<T, 3, 1> transform_vect_body_enu_ned(const Eigen::Matrix<T,3,1> &vec) {
-	return BODY_ENU_NED_TF * vec;
+	return BODY_ENU_NED_TF<T> * vec;
 }
 
 /**
@@ -139,7 +142,7 @@ inline Eigen::Matrix<T, 3, 1> transform_vect_body_enu_ned(const Eigen::Matrix<T,
  */
 template <typename T>
 inline Eigen::Matrix<T, 3, 1> transform_vect_inertial_enu_ned(const Eigen::Matrix<T,3,1> &vec) {
-	return NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z * vec);
+	return NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z<T, 3> * vec);
 }
 
 
@@ -154,7 +157,7 @@ inline Eigen::Matrix<T, 3, 1> transform_vect_inertial_enu_ned(const Eigen::Matri
  */
 template <typename T>
 inline Eigen::Matrix<T, 3, 3> transform_cov3_body_enu_ned(const Eigen::Matrix<T, 3, 3> &cov_in) {
-	return cov_in * BODY_ENU_NED_Q;
+	return cov_in * BODY_ENU_NED_Q<T>;
 }
 
 
@@ -172,7 +175,7 @@ template <typename T>
 inline Eigen::Matrix<T, 3, 3> transform_cov3_inertial_enu_ned(const Eigen::Matrix<T, 3, 3> &cov_in) {
 	Eigen::Matrix<T, 3, 3> cov_out;
 
-	cov_out = NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z * cov_in * NED_ENU_REFLECTION_Z.transpose() ) *
+	cov_out = NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z<T, 3> * cov_in * NED_ENU_REFLECTION_Z<T, 3>.transpose() ) *
         NED_ENU_REFLECTION_XY.transpose();
     
 	return cov_out;

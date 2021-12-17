@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package format="2">
- <name>dsor_utils</name>
- <version>1.0.0</version>
- <description>Utilitary library with functions common to multiple projects</description>
+    <name>dsor_utils</name>
+    <version>1.0.0</version>
+    <description>Utilitary library with functions common to multiple projects</description>
 
- <license>MIT</license>
+    <license>MIT</license>
 
- <author email="marcelo.jacinto@tecnico.ulisboa.pt">Marcelo Jacinto</author>
- <maintainer email="marcelo.jacinto@tecnico.ulisboa.pt">Marcelo Jacinto</maintainer>
+    <author email="marcelo.jacinto@tecnico.ulisboa.pt">Marcelo Jacinto</author>
+    <maintainer email="marcelo.jacinto@tecnico.ulisboa.pt">Marcelo Jacinto</maintainer>
 
- <buildtool_depend>catkin</buildtool_depend>
+    <buildtool_depend>catkin</buildtool_depend>
 </package>
