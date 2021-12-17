@@ -1,8 +1,7 @@
 /**
  * Authors:
  *      Marcelo Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)
- *      Joao Quintas (jquintas@gmail.com)
- *      Joao Cruz (joao.pedro.cruz@tecnico.ulisboa.pt)
+ *      Andre Potes (andre.potes@tecnico.ulisboa.pt)
  * Maintained by: Marcelo Fialho Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)
  * Last Update: 14/12/2021
  * License: MIT
@@ -14,8 +13,7 @@
 
 #include <Eigen/Core>
 #include <cmath>
-#include <typeinfo>
-#include <iostream>
+
 namespace DSOR {
 
 /**
@@ -43,7 +41,7 @@ inline Eigen::Matrix<T, 3, 1> quaternion_to_euler(const Eigen::Quaternion<T> &q)
 
     /* Compute yaw */
     rpy.z() = std::atan2(2 * (q.w() * q.z() + q.x() * q.y()), 1 - 2 * (q.y() * q.y() + q.z() * q.z()));
-    
+
     return rpy;
 }
 
@@ -90,7 +88,7 @@ inline T yaw_from_quaternion(const Eigen::Quaternion<T> &q) {
 template <typename T>
 inline T wrapTo2pi(T angle) {
 
-    T wrapped_angle = std::fmod(angle, 2 * M_PI);
+    double wrapped_angle = std::fmod(angle, 2 * M_PI);
 
     if(wrapped_angle < 0) 
         wrapped_angle += 2 * M_PI;
@@ -106,7 +104,7 @@ inline T wrapTo2pi(T angle) {
 template <typename T>
 inline T wrapTopi(T angle) {
 
-    T wrapped_angle = std::fmod(angle + M_PI, 2 * M_PI);
+    double wrapped_angle = std::fmod(angle + M_PI, 2 * M_PI);
 
     if (wrapped_angle < 0)
         wrapped_angle += 2 * M_PI;
@@ -153,12 +151,12 @@ inline T angleDiff(T a, T b) {
 
 
 /**
- * @brief Compute the skew-symmetric matrix from a vector 3x1
+ * @brief Compute the 3x3 skew-symmetric matrix from a vector 3x1
  * @param v A vector with 3 elements
  * @return A 3x3 skew-symmetric matrix
  */
 template <typename T>
-inline Eigen::Matrix<T, 3, 3> computeSkewSymmetric(const Eigen::Matrix<T, 3, 1> &v) {
+inline Eigen::Matrix<T, 3, 3> computeSkewSymmetric3(const Eigen::Matrix<T, 3, 1> &v) {
 
     Eigen::Matrix<T, 3, 3> skew_symmetric;
     skew_symmetric <<    0, -v(2),  v(1),
@@ -169,8 +167,23 @@ inline Eigen::Matrix<T, 3, 3> computeSkewSymmetric(const Eigen::Matrix<T, 3, 1> 
 }
 
 /**
+ * @brief Compute the 2x2 skew-symmetric matrix from a constant (int, float or double)
+ * @param v A constant
+ * @return A 2x2 skew-symmetric matrix
+ */
+template <typename T>
+inline Eigen::Matrix<T, 2, 2> computeSkewSymmetric2(T c) {
+
+    Eigen::Matrix<T, 2, 2> skew_symmetric;
+    skew_symmetric << 0, -c,
+                      c,  0;
+
+    return skew_symmetric;
+}
+
+/**
  * @brief Compute the rotation matrix that converts angular velocities expressed in the body frame
- * to angular velocities expressed in the inertial frame (according to Z-Y-X convention)
+ * to angular velocities expressed in the inertial frame (according to Z-Y-X convention) - makes use of small angle approximation
  * @param v A vector with 3 elements (roll, pitch, yaw)
  * @return A 3x3 rotation matrix
  */
@@ -190,13 +203,16 @@ inline Eigen::Matrix<T, 3, 3> rotationAngularBodyToInertial(const Eigen::Matrix<
  */
 template <typename T>
 inline Eigen::Matrix<T, 3, 3> rotationBodyToInertial(const Eigen::Matrix<T, 3, 1> &v) {
-
-    Eigen::Matrix<T, 3, 3> rot_matrix;
     
-    rot_matrix << cos(v(2)) * cos(v(1)), (-sin(v(2)) * cos(v(0))) + (cos(v(2)) * sin(v(1)) * sin(v(0))), (sin(v(2)) * sin(v(0))) + (cos(v(2)) * cos(v(0)) * sin(v(1))),
-                  sin(v(2)) * cos(v(1)), (cos(v(2)) * cos(v(0))) + (sin(v(0)) * sin(v(1)) * sin(v(2))), (-cos(v(2)) * sin(v(0))) + (sin(v(1)) * sin(v(2)) * cos(v(0))),
-                 -sin(v(1)), cos(v(1)) * sin(v(0)), cos(v(1)) * cos(v(0));
-    return rot_matrix;
+    // Create a quaternion
+    Eigen::Matrix<T, 3, 3> m;
+
+    // Obtain the orientation according to Z-Y-X convention
+    m = (Eigen::AngleAxis<T>(v.z(), Eigen::Matrix<T, 3, 1>::UnitZ()) *
+         Eigen::AngleAxis<T>(v.y(), Eigen::Matrix<T, 3, 1>::UnitY()) *
+         Eigen::AngleAxis<T>(v.x(), Eigen::Matrix<T, 3, 1>::UnitX())).toRotationMatrix();
+    
+    return m;
 }
 
 }

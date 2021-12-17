@@ -1,18 +1,23 @@
+/**
+ * Authors:
+ *      Andre Potes (andre.potes@tecnico.ulisboa.pt)
+ *      Marcelo Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)
+ * Maintained by: 
+ *      Andre Potes (andre.potes@tecnico.ulisboa.pt)
+ *      Marcelo Jacinto (marcelo.jacinto@tecnico.ulisboa.pt)                
+ * Last Update: 17/12/2021
+ * License: MIT
+ * File: test_spherical.cpp 
+ * Brief: Tests all the functions declared in spherical_coordinates.hpp
+ */
 #include "dsor_utils/spherical_coordinates.hpp"
-#include <Eigen/Dense>
-// Bring in gtest
 #include <gtest/gtest.h>
 
-
-// Declare a test
+/**
+ * @brief Test function: Eigen::Matrix<T, 3, 1> DSOR::spherical_to_cartesian(T bearing, T elevation, T range)
+ */
 TEST(TestSuite, testCase5) {
-    ASSERT_DOUBLE_EQ(2, 2);
-}
-
-// Declare another test 
-// calling EXPECT_* and/or ASSERT_* macros as needed
-TEST(TestSuite, testCase6) {
-    
+    // TODO
 }
 
 int main(int argc, char **argv) {
