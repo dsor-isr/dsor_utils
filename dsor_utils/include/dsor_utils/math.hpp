@@ -28,7 +28,7 @@ inline int sign(T v) {
 }
 
 /**
- * @brief A function that saturates 2 values
+ * @brief A function that saturates 2 values linearly
  * @param value A number to saturate
  * @param min The minimum value
  * @param max The maximum value

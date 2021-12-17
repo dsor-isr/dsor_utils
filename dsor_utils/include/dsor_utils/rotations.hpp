@@ -14,7 +14,8 @@
 
 #include <Eigen/Core>
 #include <cmath>
-
+#include <typeinfo>
+#include <iostream>
 namespace DSOR {
 
 /**
@@ -41,7 +42,8 @@ inline Eigen::Matrix<T, 3, 1> quaternion_to_euler(const Eigen::Quaternion<T> &q)
     rpy.y() = std::asin(sin_pitch);
 
     /* Compute yaw */
-    rpy.z() = std::atan2(2 * (q.w()*q.z() + q.x()*q.y()), 1 - 2 * (q.y()*q.y() + q.z()*q.z()));
+    rpy.z() = std::atan2(2 * (q.w() * q.z() + q.x() * q.y()), 1 - 2 * (q.y() * q.y() + q.z() * q.z()));
+    
     return rpy;
 }
 
