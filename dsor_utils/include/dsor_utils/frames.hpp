@@ -104,8 +104,16 @@ inline Eigen::Quaternion<T> rot_inertial_rotation(const Eigen::Quaternion<T> &q)
 
 
 /**
- * @brief Transform a rotation (as a quaternion) from body (ENU or NED) to inertial frame (ENU or NED)
+ * @brief Transform a rotation of a rigid body (as a quaternion) from body (ENU or NED) to inertial frame (ENU or NED)
  * 			to a similar rotation (as quaternion) from body (NED or ENU) to inertial frame (NED or ENU)
+ * 
+ * NOTE: This function is usefull to convert the attitude of a vehicle from "ROS" quaternion to a typicall literature 
+ * quaternion (where both the body frame and inertial frames are in ENU). If you are converting a quaternion that expresses
+ * the orientation of a sensor with respect to a rigid body's body frame (and not the inertial frame), then you DO NOT WANT TO USE THIS FUNCTION. 
+ * Body-FRAME NED is not the same as INERTIAL-FRAME NED (this comes once again from the fact that in ned body
+ * the x-y axis don't switch like in inertial frame) as explained in the documentation.
+ * 
+ * Essencial only use this if you are representing a body in inertial frame!
  * 
  * NOTE: Check http://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/transforms/
  * 	for more details behind these type of transformations towards obtaining rotations in different
@@ -116,7 +124,7 @@ inline Eigen::Quaternion<T> rot_inertial_rotation(const Eigen::Quaternion<T> &q)
  */
 template <typename T>
 inline Eigen::Quaternion<T> rot_body_to_inertial(const Eigen::Quaternion<T> &q) {
-	return rot_inertial_rotation( rot_body_rotation( q ) );
+	return rot_inertial_rotation(rot_body_rotation(q));
 }
 
 
@@ -132,6 +140,21 @@ template <typename T>
 inline Eigen::Matrix<T, 3, 1> transform_vect_body_enu_ned(const Eigen::Matrix<T,3,1> &vec) {
 	return BODY_ENU_NED_TF<T> * vec;
 }
+
+/**
+ * @brief Transform a vector in a given frame of reference to another frame of reference.
+ * 
+ * @param vec Vector expressed in the original frame of reference
+ * @param q Quaternion that expresses the orientation of the original frame of reference with respect to the final frame of reference
+ * @return Vector expressed in the new frame of reference
+ */
+template <typename T>
+inline Eigen::Matrix<T, 3, 1> transform_vect_between_arbitrary_ref(const Eigen::Matrix<T, 3, 1> &vec, const Eigen::Quaternion<T> &q) {
+
+	// Create an Affine3D transform with the rotation between the reference frames
+	const Eigen::Transform<T, 3, Eigen::Affine> frame_conversion = Eigen::Transform<T, 3, Eigen::Affine>(q);
+	return frame_conversion * vec;
+}	
 
 /**
  * @brief Transform vector in ENU (or NED) to NED (or ENU), expressed in inertial-frame.
