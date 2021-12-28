@@ -1,4 +1,4 @@
-# DSOR Common
+# DSOR Utils
 Common libraries used by DSOR/ISR, Portugal
 
 ## Install the repository
