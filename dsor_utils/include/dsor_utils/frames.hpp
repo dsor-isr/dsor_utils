@@ -165,7 +165,7 @@ inline Eigen::Matrix<T, 3, 1> transform_vect_between_arbitrary_ref(const Eigen::
  */
 template <typename T>
 inline Eigen::Matrix<T, 3, 1> transform_vect_inertial_enu_ned(const Eigen::Matrix<T,3,1> &vec) {
-	return NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z<T, 3> * vec);
+	return NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z<T> * vec);
 }
 
 
