@@ -10,7 +10,8 @@
  * Brief: Defines all functions related to general math functions that can be used anywhere
  */
 #pragma once
-#include <Eigen/Dense>
+
+#include <algorithm>
 
 namespace DSOR {
 
