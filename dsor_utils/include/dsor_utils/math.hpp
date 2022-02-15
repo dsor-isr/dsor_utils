@@ -40,4 +40,16 @@ inline T saturation(T value, T min, T max) {
     return std::max(std::min(value, max), min);
 }
 
+/**
+ *@brief A function to check if two numbers are equal (int, float, double, etc)
+ * @param a a number to compare
+ * @param b another number to compare
+ * @param tolerance tolerance of comparison
+ * @return A boolean for true if equal within tolerance, or otherwise
+ */
+template <typename T>
+inline bool approximatelyEquals(T a, T b, T tolerance=1e-6) {
+    if (b == 0.0) return a == 0.0; // preventing division by zero
+    return std::abs(1.0 - a / b) < tolerance;
+}
 }
