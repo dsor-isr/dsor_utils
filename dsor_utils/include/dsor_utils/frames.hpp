@@ -184,7 +184,6 @@ inline Eigen::Matrix<T, 3, 3> transform_cov3_body_enu_ned(const Eigen::Matrix<T,
 }
 
 
-
 /**
  * @brief Transform 3x3 covariance matrix in ENU (or NED) to NED (or ENU), expressed in inertial-frame.
  * 
@@ -198,7 +197,7 @@ template <typename T>
 inline Eigen::Matrix<T, 3, 3> transform_cov3_inertial_enu_ned(const Eigen::Matrix<T, 3, 3> &cov_in) {
 	Eigen::Matrix<T, 3, 3> cov_out;
 
-	cov_out = NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z<T, 3> * cov_in * NED_ENU_REFLECTION_Z<T, 3>.transpose() ) *
+	cov_out = NED_ENU_REFLECTION_XY * (NED_ENU_REFLECTION_Z<T> * cov_in * NED_ENU_REFLECTION_Z<T> ) *
         NED_ENU_REFLECTION_XY.transpose();
     
 	return cov_out;
