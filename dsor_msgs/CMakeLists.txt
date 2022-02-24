@@ -2,11 +2,19 @@ cmake_minimum_required(VERSION 3.1)
 project(dsor_msgs)
 
 # Find catkin libraries
-find_package(catkin REQUIRED COMPONENTS std_msgs message_generation geometry_msgs)
+find_package(catkin REQUIRED COMPONENTS 
+  std_msgs 
+  message_generation 
+  geometry_msgs)
 
 # Generate messages in the 'msg' folder
 add_message_files(
 	DIRECTORY msg
+)
+
+# Generate services in the 'srv' folder
+add_service_files(
+	DIRECTORY srv
 )
 
 # Generate added messages and services with any dependencies listed here
