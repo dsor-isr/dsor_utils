@@ -14,6 +14,13 @@
 #include "dsor_utils/frames.hpp"
 #include "dsor_utils/control/vehicle_saturations.hpp"
 #include "dsor_utils/spherical_coordinates.hpp"
+#include "dsor_utils/filters/differentiator.hpp"
+#include "dsor_utils/filters/digital_filter.hpp"
+#include "dsor_utils/filters/highpass_filter.hpp"
+#include "dsor_utils/filters/lowpass_filter.hpp"
+#include "dsor_utils/filters/moving_average_filter.hpp"
+#include "dsor_utils/data_structures/circular_buffer.hpp"
+
 // Note: math.hpp, rotations.hpp and frames.hpp are only included so that the header files are indexed by catkin (to be improved)
 
 /**

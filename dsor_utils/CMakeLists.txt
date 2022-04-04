@@ -19,7 +19,7 @@ add_compile_options(-std=c++17 -Wall -O3)
 
 # Create the include dependencies for this library
 include_directories(
-  include 
+  include
   ${catkin_INCLUDE_DIRS} 
   ${EIGEN3_INCLUDE_DIR}
   ${GTEST_INCLUDE_DIRS}
