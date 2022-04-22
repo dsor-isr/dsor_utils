@@ -1,6 +1,9 @@
 # DSOR Utils
 Common libraries used by DSOR/ISR, Portugal
 
+
+[![Build Status](https://ci.dsor.isr.tecnico.ulisboa.pt/buildStatus/icon?job=GitHub+DSOR%2Fdsor_utils%2Fmain)](https://ci.dsor.isr.tecnico.ulisboa.pt/job/GitHub%20DSOR/job/dsor_utils/job/main/)
+
 ## Install the repository
 We assume that the user has ROS NOETIC already installed along with Eigen Library.
 ```

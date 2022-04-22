@@ -7,16 +7,23 @@ pipeline {
             args '--entrypoint=""'
         }
     }
+    environment {
+        ROS_WORKSPACE = "${HOME}/catkin_ws"
+    }
+    options {
+        checkoutToSubdirectory('${ROS_WORKSPACE}')
+    }
+    // Move all the packages to the default catkin workspace
     stages {
+        
         // Build stage - compile the code
         stage('Build') {
             steps {
                 echo 'Build..'
-                dir('catkin_ws') {
+                dir(path: "${ROS_WORKSPACE}") {
                     sh '''#!/bin/bash
                     source /opt/ros/noetic/setup.bash
-                    catkin build --no-status
-                '''
+                    catkin build --no-status'''
                 }
             }
         }
@@ -24,6 +31,13 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                dir(path: "${ROS_WORKSPACE}") {
+                    sh '''#!/bin/bash
+                    source /opt/ros/noetic/setup.bash
+                    source ${ROS_WORKSPACE}/devel/setup.bash
+                    catkin test 
+                    '''
+                }
             }
         }
         // Generate Doxygen documentation
