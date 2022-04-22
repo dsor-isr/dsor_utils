@@ -9,22 +9,24 @@ pipeline {
     }
     environment {
         PACKAGE_NAME = 'dsor_utils'
+        ROS_WORKSPACE = ${HOME}/catkin_ws
     }
+    // Move all the packages to the default catkin workspace
     stages {
         stage('Setup') {
             steps {
-                sh 'printenv'
                 sh '''
-                    pwd
-                    ls
-                    '''
+                    printenv
+                    mv -R . ${ROS_WORKSPACE}/src
+                    rm -r ${ROS_WORKSPACE}/src/catkin_ws
+                    rm -r ${ROS_WORKSPACE}/src/catkin_ws@tmp'''
             }
         }
         // Build stage - compile the code
         stage('Build') {
             steps {
                 echo 'Build..'
-                dir('catkin_ws') {
+                dir(path: "${ROS_WORKSPACE}") {
                     sh '''#!/bin/bash
                     source /opt/ros/noetic/setup.bash
                     catkin build --no-status'''
