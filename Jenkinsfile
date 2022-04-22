@@ -15,14 +15,9 @@ pipeline {
             steps {
                 sh 'printenv'
                 sh '''
-                    mkdir -p ${ROS_WORKSPACE}/src
-                    cp -R . ${ROS_WORKSPACE}/src
-                    rm -r ${ROS_WORKSPACE}/src/catkin_ws
-                    rm -r ${ROS_WORKSPACE}/src/catkin_ws@tmp
+                    pwd
+                    ls
                     '''
-                sh '''
-                    cd ${ROS_WORKSPACE}/src
-                    ls'''
             }
         }
         // Build stage - compile the code
