@@ -31,6 +31,13 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                dir(path: "${ROS_WORKSPACE}") {
+                    sh '''#!/bin/bash
+                    source /opt/ros/noetic/setup.bash
+                    source ${ROS_WORKSPACE}/devel/setup.bash
+                    catkin test 
+                    '''
+                }
             }
         }
         // Generate Doxygen documentation
