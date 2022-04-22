@@ -12,13 +12,15 @@ pipeline {
     }
     stages {
         stage('Setup') {
-            sh 'printenv'
-            sh '''
-                mkdir -p ${ROS_WORKSPACE}/src
-                cp -R . ${ROS_WORKSPACE}/src'''
-            sh '''
-                cd ${ROS_WORKSPACE}/src
-                ls'''
+            steps {
+                sh 'printenv'
+                sh '''
+                    mkdir -p ${ROS_WORKSPACE}/src
+                    cp -R . ${ROS_WORKSPACE}/src'''
+                sh '''
+                    cd ${ROS_WORKSPACE}/src
+                    ls'''
+            }
         }
         // Build stage - compile the code
         stage('Build') {
