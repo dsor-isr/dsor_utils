@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh '''
                     printenv
-                    mv -R . ${ROS_WORKSPACE}/src
+                    cp -R ${ROS_WORKSPACE}/src
                     rm -r ${ROS_WORKSPACE}/src/catkin_ws
                     rm -r ${ROS_WORKSPACE}/src/catkin_ws@tmp'''
             }
