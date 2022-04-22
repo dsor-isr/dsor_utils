@@ -13,7 +13,6 @@
 #include "dsor_utils/rotations.hpp"
 #include <Eigen/Dense>
 #include <gtest/gtest.h>
-#include <iostream>
 
 #define APPROX_PRECISION 0.0001
 
@@ -210,7 +209,6 @@ TEST(TestSuite, degToRad) {
 
     // Test the result for int, floats and doubles
     for (unsigned int i = 0; i < expected_i.size(); i++) {
-        std::cout << std::abs(DSOR::degToRad<int>(input_i[i]) - expected_i[i]) << std::endl;
         ASSERT_TRUE(std::abs(DSOR::degToRad<int>(input_i[i]) - expected_i[i]) < APPROX_PRECISION);
         ASSERT_TRUE(std::abs(DSOR::degToRad<float>(input_f[i]) - expected_f[i]) < APPROX_PRECISION);
         ASSERT_TRUE(std::abs(DSOR::degToRad<double>(input_d[i]) - expected_d[i]) < APPROX_PRECISION);
