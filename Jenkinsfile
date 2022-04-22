@@ -7,16 +7,27 @@ pipeline {
             args '--entrypoint=""'
         }
     }
+    environment {
+        PACKAGE_NAME = 'dsor_utils'
+    }
     stages {
+        stage('Setup') {
+            sh 'printenv'
+            sh '''
+                mkdir -p ${ROS_WORKSPACE}/src
+                cp -R . ${ROS_WORKSPACE}/src'''
+            sh '''
+                cd ${ROS_WORKSPACE}/src
+                ls'''
+        }
         // Build stage - compile the code
         stage('Build') {
             steps {
                 echo 'Build..'
-                dir('catkin_ws') {
+                dir('${ROS_WORKSPACE}') {
                     sh '''#!/bin/bash
                     source /opt/ros/noetic/setup.bash
-                    catkin build --no-status
-                '''
+                    catkin build --no-status'''
                 }
             }
         }
