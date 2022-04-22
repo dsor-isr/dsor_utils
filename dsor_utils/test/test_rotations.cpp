@@ -200,13 +200,13 @@ TEST(TestSuite, degToRad) {
     
     // Inputs values to the function
     std::vector<int> input_i{0, 10, 20, 99, 102, 260, 360, 400, -10, -400};
-    std::vector<double> input_f{0.0, 10.0, 20.0, 99.0, 102.0, 260.0, 360.0, 400.0, -10.0, -400.0};
-    std::vector<float> input_d{0.0, 10.0, 20.0, 99.0, 102.0, 260.0, 360.0, 400.0, -10.0, -400.0};
+    std::vector<float> input_f{0.0, 10.0, 20.0, 99.0, 102.0, 260.0, 360.0, 400.0, -10.0, -400.0};
+    std::vector<double> input_d{0.0, 10.0, 20.0, 99.0, 102.0, 260.0, 360.0, 400.0, -10.0, -400.0};
 
     // Output values to the function
-    std::vector<int> expected_i{0, 0, 0, 1, 1, 4, 6, 6, 0, -6, 3, 0};
-    std::vector<float> expected_f{0.0, 0.174533, 0.349066, 1.72788, 1.78024, 4.53786, 6.28319, 6.98132, -0.174533, -6.98132, 0.0, 0.0};
-    std::vector<double> expected_d{0.0, 0.174533, 0.349066, 1.72788, 1.78024, 4.53786, 6.28319, 6.98132, -0.174533, -6.98132, 0.0, 0.0};
+    std::vector<int> expected_i{0, 0, 0, 1, 1, 4, 6, 6, 0, -6};
+    std::vector<float> expected_f{0.0, 0.174533, 0.349066, 1.72788, 1.78024, 4.53786, 6.28319, 6.98132, -0.174533, -6.98132};
+    std::vector<double> expected_d{0.0, 0.174533, 0.349066, 1.72788, 1.78024, 4.53786, 6.28319, 6.98132, -0.174533, -6.98132};
 
     // Test the result for int, floats and doubles
     for (unsigned int i = 0; i < expected_i.size(); i++) {
