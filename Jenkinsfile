@@ -8,8 +8,7 @@ pipeline {
         }
     }
     environment {
-        PACKAGE_NAME = 'dsor_utils'
-        ROS_WORKSPACE = ${HOME}/catkin_ws
+        ROS_WORKSPACE = "${HOME}/catkin_ws"
     }
     // Move all the packages to the default catkin workspace
     stages {
