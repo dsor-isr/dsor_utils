@@ -15,7 +15,6 @@ pipeline {
     }
     // Move all the packages to the default catkin workspace
     stages {
-        
         // Build stage - compile the code
         stage('Build') {
             steps {
@@ -41,7 +40,9 @@ pipeline {
             }
         }
         // Generate Doxygen documentation
+        // only in release tags
         stage('Documentation') {
+            when {tag "release-*"}
             steps{
                 echo 'Generating Doxygen Documentation..'
             }
