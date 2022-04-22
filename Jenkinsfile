@@ -8,27 +8,6 @@ pipeline {
         }
     }
     stages {
-        // Checkout stage to make sure the submodules are updated to the correct version
-        stage('Checkout') {
-            steps{
-                echo 'Checkout..'
-                checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [[
-                        $class: 'SubmoduleOption', 
-                        disableSubmodules: false, 
-                        parentCredentials: true, 
-                        recursiveSubmodules: true, 
-                        reference: '', 
-                        trackingSubmodules: false]], 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [[
-                        credentialsId: 'github_app_tokn', 
-                        url: 'git@github.com:dsor-isr/dsor_utils.git']]])
-            }
-        }
         // Build stage - compile the code
         stage('Build') {
             steps {
