@@ -16,7 +16,9 @@ pipeline {
             steps {
                 sh '''
                     printenv
-                    rm -r ${ROS_WORKSPACE}/src
+                    if [ -d "${ROS_WORKSPACE}/src" ]; then
+                        rm -r ${ROS_WORKSPACE}/src
+                    fi
                     mkdir -p ${ROS_WORKSPACE}/src
                     cp -R . ${ROS_WORKSPACE}/src
                     rm -r ${ROS_WORKSPACE}/src/catkin_ws
