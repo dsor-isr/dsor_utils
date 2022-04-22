@@ -10,21 +10,12 @@ pipeline {
     environment {
         ROS_WORKSPACE = "${HOME}/catkin_ws"
     }
+    options {
+        checkoutToSubdirectory('${ROS_WORKSPACE}')
+    }
     // Move all the packages to the default catkin workspace
     stages {
-        stage('Setup') {
-            steps {
-                sh '''
-                    printenv
-                    if [ -d "${ROS_WORKSPACE}/src" ]; then
-                        rm -r ${ROS_WORKSPACE}/src
-                    fi
-                    mkdir -p ${ROS_WORKSPACE}/src
-                    cp -R . ${ROS_WORKSPACE}/src
-                    rm -r ${ROS_WORKSPACE}/src/catkin_ws
-                    rm -r ${ROS_WORKSPACE}/src/catkin_ws@tmp'''
-            }
-        }
+        
         // Build stage - compile the code
         stage('Build') {
             steps {
