@@ -16,7 +16,10 @@ pipeline {
                 sh 'printenv'
                 sh '''
                     mkdir -p ${ROS_WORKSPACE}/src
-                    cp -R . ${ROS_WORKSPACE}/src'''
+                    cp -R . ${ROS_WORKSPACE}/src
+                    rm -r ${ROS_WORKSPACE}/src/catkin_ws
+                    rm -r ${ROS_WORKSPACE}/src/catkin_ws@tmp
+                    '''
                 sh '''
                     cd ${ROS_WORKSPACE}/src
                     ls'''
@@ -26,7 +29,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build..'
-                dir('${ROS_WORKSPACE}') {
+                dir('catkin_ws') {
                     sh '''#!/bin/bash
                     source /opt/ros/noetic/setup.bash
                     catkin build --no-status'''
