@@ -13,14 +13,14 @@ pipeline {
     }
     // Move all the packages to the default catkin workspace
     stages {
-        // Build stage - compile the code (using 12 threads)
+        // Build stage - compile the code (using 10 threads)
         stage('Build') {
             steps {
                 echo 'Build..'
                 dir('catkin_ws') {
                     sh '''#!/bin/bash
                     source /opt/ros/noetic/setup.bash
-                    catkin build --no-status -j20'''
+                    catkin build --no-status -j10'''
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
                     sh '''#!/bin/bash
                     source /opt/ros/noetic/setup.bash
                     source ${WORKSPACE}/catkin_ws/devel/setup.bash
-                    catkin test -j1
+                    catkin test -j10
                     '''
                 }
             }
