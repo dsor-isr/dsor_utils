@@ -20,6 +20,7 @@
 #include "dsor_utils/filters/lowpass_filter.hpp"
 #include "dsor_utils/filters/moving_average_filter.hpp"
 #include "dsor_utils/data_structures/circular_buffer.hpp"
+#include "dsor_utils/control/vehicle_state.hpp"
 
 // Note: math.hpp, rotations.hpp and frames.hpp are only included so that the header files are indexed by catkin (to be improved)
 
