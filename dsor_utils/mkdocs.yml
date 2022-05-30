@@ -1,0 +1,4 @@
+site_name: DSOR Utility Functions
+
+nav:
+  - Reference: "README.md"
