@@ -118,8 +118,14 @@ nav:
 # You can change it, to see how it looks localy, but it well get ovewritten by Jenkins when deploying
 # ---------------------------------------------------------------------------------------------------
 - Packages documentation:
-  - Dsor Msgs: '!include ./dsor_msgs/mkdocs.yml'
-  - Dsor Utils: '!include ./dsor_utils/mkdocs.yml'
+  - Dsor Msgs:
+    - Documentation: '!include ./dsor_msgs/mkdocs.yml'
+  - Dsor Utils:
+    - Documentation: '!include ./dsor_utils/mkdocs.yml'
+    - Classes:
+      - api/markdown/dsor_utils/Classes
+    - Namespaces:
+      - api/markdown/dsor_utils/Namespaces
 - Contributing:
   - Code of Conduct: pages/CODE_OF_CONDUCT.md
   - Contributing: pages/CONTRIBUTING.md
