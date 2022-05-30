@@ -110,7 +110,7 @@ for package_path in packages_with_docs:
 
             # Check if the package is in the ignore packages, just skip
             for ignore_package in doxy_ignore_packages:
-                if ignore_package in path_by_sub_strings_original:
+                if ignore_package != '' and ignore_package in path_by_sub_strings_original:
                     dox_skip_package = True
 
             # Only add the directory to the manual documentation (docs folder) inside the corresponding package
@@ -131,6 +131,9 @@ for package_path in packages_with_docs:
                     text=True,
                     cwd=path_by_sub_strings_original[1:],
                     shell=True)
+                
+                print(result.stdout)
+                print(result.stderr)
 
                 # 3. Create the directory if it does not exist for the markdown code documentation
                 os.makedirs(output_markdown_dox_directory + path_by_sub_strings_original, exist_ok=True)
