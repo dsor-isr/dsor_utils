@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.1)
 project(dsor_utils)
 
 # Make sure the system has catkin and Eigen3 installed
-find_package(catkin REQUIRED COMPONENTS)
+find_package(catkin REQUIRED COMPONENTS
+             roscpp)
 find_package(Eigen3 REQUIRED)
 find_package(GTest REQUIRED)
 
@@ -11,7 +12,7 @@ catkin_package(
   include
  LIBRARIES 
   ${PROJECT_NAME}
- CATKIN_DEPENDS
+ CATKIN_DEPENDS roscpp
 )
 
 # Define the compile options for the library
