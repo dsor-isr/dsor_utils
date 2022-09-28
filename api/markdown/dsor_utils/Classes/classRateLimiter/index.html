@@ -10,14 +10,14 @@
         <meta name="author" content="The Medusa Team">
       
       
-        <link rel="canonical" href="https://dsor-isr.github.io/dsor_utils/api/markdown/dsor_utils/Classes/classDigitalFilter/">
+        <link rel="canonical" href="https://dsor-isr.github.io/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/">
       
       <link rel="icon" href="../../../../../Images/icons/dsor.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16">
     
     
       
-        <title>DigitalFilter - DSOR Utils Documentation</title>
+        <title>RateLimiter - DSOR Utils Documentation</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#digitalfilter" class="md-skip">
+        <a href="#ratelimiter" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DigitalFilter
+              RateLimiter
             
           </span>
         </div>
@@ -662,86 +662,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          DigitalFilter
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../classDigitalFilter/" class="md-nav__link">
         DigitalFilter
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#public-functions" class="md-nav__link">
-    Public Functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#detailed-description" class="md-nav__link">
-    Detailed Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#public-functions-documentation" class="md-nav__link">
-    Public Functions Documentation
-  </a>
-  
-    <nav class="md-nav" aria-label="Public Functions Documentation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-update" class="md-nav__link">
-    function update
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-getoutput" class="md-nav__link">
-    function getOutput
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -863,11 +788,121 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../classRateLimiter/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RateLimiter
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         RateLimiter
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions" class="md-nav__link">
+    Public Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-description" class="md-nav__link">
+    Detailed Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-functions-documentation" class="md-nav__link">
+    Public Functions Documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-ratelimiter" class="md-nav__link">
+    function RateLimiter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-ratelimiter_1" class="md-nav__link">
+    function RateLimiter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-calculate" class="md-nav__link">
+    function Calculate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-setnewratelimit" class="md-nav__link">
+    function setNewRateLimit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getratelimit" class="md-nav__link">
+    function getRateLimit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getpreviousvalue" class="md-nav__link">
+    function getPreviousValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-reset" class="md-nav__link">
+    function Reset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1155,15 +1190,50 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-update" class="md-nav__link">
-    function update
+  <a href="#function-ratelimiter" class="md-nav__link">
+    function RateLimiter
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#function-getoutput" class="md-nav__link">
-    function getOutput
+  <a href="#function-ratelimiter_1" class="md-nav__link">
+    function RateLimiter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-calculate" class="md-nav__link">
+    function Calculate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-setnewratelimit" class="md-nav__link">
+    function setNewRateLimit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getratelimit" class="md-nav__link">
+    function getRateLimit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-getpreviousvalue" class="md-nav__link">
+    function getPreviousValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-reset" class="md-nav__link">
+    function Reset
   </a>
   
 </li>
@@ -1185,7 +1255,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-  <a href="https://github.com/dsor-isr/dsor_utils/edit/main/docs/api/markdown/dsor_utils/Classes/classDigitalFilter.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/dsor-isr/dsor_utils/edit/main/docs/api/markdown/dsor_utils/Classes/classRateLimiter.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
@@ -1194,9 +1264,9 @@
 
 
 
-<h1 id="digitalfilter">DigitalFilter</h1>
-<p>Abstract base class for digital moving filters.  <a href="#detailed-description">More...</a></p>
-<p><code>#include &lt;digital_filter.hpp&gt;</code></p>
+<h1 id="ratelimiter">RateLimiter</h1>
+<p><a href="#detailed-description">More...</a></p>
+<p><code>#include &lt;rate_limiter.hpp&gt;</code></p>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -1207,35 +1277,94 @@
 </thead>
 <tbody>
 <tr>
-<td>virtual Type</td>
-<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classDigitalFilter/#function-update">update</a></strong>(Type newValue) =0</td>
+<td></td>
+<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/#function-ratelimiter">RateLimiter</a></strong>()</td>
 </tr>
 <tr>
-<td>virtual Type</td>
-<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classDigitalFilter/#function-getoutput">getOutput</a></strong>() =0</td>
+<td></td>
+<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/#function-ratelimiter">RateLimiter</a></strong>(double initialValue, bool using_circular_units =false)</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/#function-calculate">Calculate</a></strong>(double input)</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/#function-setnewratelimit">setNewRateLimit</a></strong>(double rate_limit)<br>Set the New Rate Limit value.</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/#function-getratelimit">getRateLimit</a></strong>()<br>Get the current Rate Limit value.</td>
+</tr>
+<tr>
+<td>double</td>
+<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/#function-getpreviousvalue">getPreviousValue</a></strong>()<br>Get the current previous value.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/#function-reset">Reset</a></strong>(double value)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="detailed-description">Detailed Description</h2>
-<pre><code class="language-cpp">template &lt;typename Type &gt;
-class DigitalFilter;
+<pre><code class="language-cpp">class RateLimiter;
 </code></pre>
-<p>Abstract base class for digital moving filters. </p>
-<p><strong>Template Parameters</strong>: </p>
-<ul>
-<li><strong>Type</strong> Floating point type used. </li>
-</ul>
+<p>A class that limits the rate of change of an input value. Limits the first derivative of the signal passing through it. The output changes no faster than the specified limit. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
-<h3 id="function-update">function update</h3>
-<pre><code class="language-cpp">virtual Type update(
-    Type newValue
-) =0
+<h3 id="function-ratelimiter">function RateLimiter</h3>
+<pre><code class="language-cpp">inline RateLimiter()
 </code></pre>
-<p><strong>Reimplemented by</strong>: <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classHighPassFilter/#function-update">HighPassFilter::update</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter/#function-update">LowPassFilter::update</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter2/#function-update">LowPassFilter2::update</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classHighPassFilter3/#function-update">HighPassFilter3::update</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter3/#function-update">LowPassFilter3::update</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter3MatchedZ/#function-update">LowPassFilter3MatchedZ::update</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter3DiffApprox/#function-update">LowPassFilter3DiffApprox::update</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classDifferentiator/#function-update">Differentiator::update</a></p>
-<h3 id="function-getoutput">function getOutput</h3>
-<pre><code class="language-cpp">virtual Type getOutput() =0
+<p>Creates a new <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/">RateLimiter</a>. </p>
+<h3 id="function-ratelimiter_1">function RateLimiter</h3>
+<pre><code class="language-cpp">inline RateLimiter(
+    double initialValue,
+    bool using_circular_units =false
+)
 </code></pre>
-<p><strong>Reimplemented by</strong>: <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classDifferentiator/#function-getoutput">Differentiator::getOutput</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter/#function-getoutput">LowPassFilter::getOutput</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classHighPassFilter/#function-getoutput">HighPassFilter::getOutput</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter2/#function-getoutput">LowPassFilter2::getOutput</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classHighPassFilter3/#function-getoutput">HighPassFilter3::getOutput</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter3/#function-getoutput">LowPassFilter3::getOutput</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter3MatchedZ/#function-getoutput">LowPassFilter3MatchedZ::getOutput</a>, <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classLowPassFilter3DiffApprox/#function-getoutput">LowPassFilter3DiffApprox::getOutput</a></p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>initialValue</strong> The initial value of the input. </li>
+</ul>
+<p>Creates a new <a href="/dsor_utils/api/markdown/dsor_utils/Classes/classRateLimiter/">RateLimiter</a> with the given rate limit and initial value.</p>
+<h3 id="function-calculate">function Calculate</h3>
+<pre><code class="language-cpp">inline double Calculate(
+    double input
+)
+</code></pre>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>input</strong> The input value whose slew rate is to be limited. </li>
+</ul>
+<p><strong>Return</strong>: The filtered value, which will not change faster than the slew rate. </p>
+<p>Filters the input to limit its slew rate.</p>
+<h3 id="function-setnewratelimit">function setNewRateLimit</h3>
+<pre><code class="language-cpp">inline void setNewRateLimit(
+    double rate_limit
+)
+</code></pre>
+<p>Set the New Rate Limit value. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>rate_limit</strong> </li>
+</ul>
+<h3 id="function-getratelimit">function getRateLimit</h3>
+<pre><code class="language-cpp">inline double getRateLimit()
+</code></pre>
+<p>Get the current Rate Limit value. </p>
+<h3 id="function-getpreviousvalue">function getPreviousValue</h3>
+<pre><code class="language-cpp">inline double getPreviousValue()
+</code></pre>
+<p>Get the current previous value. </p>
+<h3 id="function-reset">function Reset</h3>
+<pre><code class="language-cpp">inline void Reset(
+    double value
+)
+</code></pre>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>value</strong> The value to reset to. </li>
+</ul>
+<p>Resets the slew rate limiter to the specified value; ignores the rate limit when doing so.</p>
 <hr />
 <p>Updated on 2022-09-28 at 18:45:24 +0000</p>
 
@@ -1267,7 +1396,7 @@ class DigitalFilter;
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../classDifferentiator/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Differentiator" rel="prev">
+        <a href="../classMovingAvarageFilter/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MovingAvarageFilter" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1276,20 +1405,20 @@ class DigitalFilter;
               <span class="md-footer__direction">
                 Previous
               </span>
-              Differentiator
+              MovingAvarageFilter
             </div>
           </div>
         </a>
       
       
         
-        <a href="../classHighPassFilter/" class="md-footer__link md-footer__link--next" aria-label="Next: HighPassFilter" rel="next">
+        <a href="../" class="md-footer__link md-footer__link--next" aria-label="Next: Classes" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              HighPassFilter
+              Classes
             </div>
           </div>
           <div class="md-footer__button md-icon">
