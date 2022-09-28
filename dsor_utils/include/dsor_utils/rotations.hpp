@@ -86,6 +86,22 @@ inline T yaw_from_quaternion(const Eigen::Quaternion<T> &q) {
  * @return The wraped angle
  */
 template <typename T>
+inline T wrapTo360(T angle) {
+
+    double wrapped_angle = std::fmod(angle, 360);
+
+    if(wrapped_angle < 0) 
+        wrapped_angle += 360;
+    return wrapped_angle;
+}
+
+/**
+ * @brief Wrap angle between [0, 2PI] 
+ * 
+ * @param angle angle in radians
+ * @return The wraped angle
+ */
+template <typename T>
 inline T wrapTo2pi(T angle) {
 
     double wrapped_angle = std::fmod(angle, 2 * M_PI);
@@ -111,6 +127,8 @@ inline T wrapTopi(T angle) {
 
     return wrapped_angle - M_PI;
 }
+
+
 
 /**
  * @brief Convert an angle in radian to degrees
@@ -142,10 +160,25 @@ inline T degToRad(T angle) {
  * @return The minimum difference between the two angles 
  */
 template <typename T>
-inline T angleDiff(T a, T b) {
+inline T angleDiffRadians(T a, T b) {
     double aux = std::fmod(a - b + M_PI, 2 * M_PI);
     if (aux < 0) aux += (2 * M_PI);
     aux = aux - M_PI;
+    return aux;
+}
+
+/**
+ * @brief Method to calculate the diference between angles correctly even if they wrap between -180 and 180
+ * 
+ * @param a angle 1 in radians 
+ * @param b angle 2 in radians
+ * @return The minimum difference between the two angles 
+ */
+template <typename T>
+inline T angleDiffDegrees(T a, T b) {
+    T aux = std::fmod(a - b + 180, 360);
+    if (aux < 0) aux += (360);
+    aux = aux - 180;
     return aux;
 }
 

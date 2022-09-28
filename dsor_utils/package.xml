@@ -11,5 +11,6 @@
     <maintainer email="marcelo.jacinto@tecnico.ulisboa.pt">Marcelo Jacinto</maintainer>
     <maintainer email="andre.potes@gmail.com">André Potes</maintainer>
 
+    <depend>roscpp</depend>
     <buildtool_depend>catkin</buildtool_depend>
 </package>
