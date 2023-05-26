@@ -13,4 +13,5 @@
 
     <depend>roscpp</depend>
     <buildtool_depend>catkin</buildtool_depend>
+    <depend>eigen</depend>
 </package>
