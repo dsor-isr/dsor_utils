@@ -29,9 +29,6 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>Eigen/Core</label>
-      </node>
       <node id="11">
         <label>dsor_utils/filters/differentiator.hpp</label>
         <link refid="differentiator_8hpp_source"/>
@@ -125,6 +122,9 @@
       <node id="9">
         <label>dsor_utils/control/vehicle_saturations.hpp</label>
         <link refid="vehicle__saturations_8hpp_source"/>
+      </node>
+      <node id="5">
+        <label>eigen3/Eigen/Core</label>
       </node>
       <node id="16">
         <label>dsor_utils/filters/highpass_filter.hpp</label>

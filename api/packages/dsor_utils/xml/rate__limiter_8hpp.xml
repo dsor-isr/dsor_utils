@@ -16,9 +16,6 @@
       <node id="5">
         <label>cmath</label>
       </node>
-      <node id="4">
-        <label>Eigen/Core</label>
-      </node>
       <node id="3">
         <label>dsor_utils/rotations.hpp</label>
         <link refid="rotations_8hpp_source"/>
@@ -29,6 +26,9 @@
       </node>
       <node id="2">
         <label>ros/ros.h</label>
+      </node>
+      <node id="4">
+        <label>eigen3/Eigen/Core</label>
       </node>
     </incdepgraph>
     <innerclass refid="classRateLimiter" prot="public">RateLimiter</innerclass>

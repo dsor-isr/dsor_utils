@@ -9,9 +9,6 @@
       <node id="6">
         <label>cmath</label>
       </node>
-      <node id="5">
-        <label>Eigen/Core</label>
-      </node>
       <node id="3">
         <label>Eigen/Dense</label>
       </node>
@@ -43,6 +40,9 @@
       </node>
       <node id="7">
         <label>gtest/gtest.h</label>
+      </node>
+      <node id="5">
+        <label>eigen3/Eigen/Core</label>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
